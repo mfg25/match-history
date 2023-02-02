@@ -1,6 +1,6 @@
 import { mainInfoContainer } from '../main-container/mainContainer'
 import './searchDiv.css'
-import logo from './icno.png'
+import logo from '../assets/icno.png'
 import { searchBySummonersName } from '../getApiInfo/getResponse'
 export function insertSearchDiv(){
 
@@ -29,7 +29,8 @@ export function insertSearchDiv(){
 
     searchButton.addEventListener('click', (e) =>{
       e.preventDefault()
-      if(!document.getElementById('main-info-container'))mainInfoContainer()
+      if(document.getElementById('main-info-container')) document.getElementById('main-info-container').remove()
+      mainInfoContainer()
       imgLogo.remove()
       imgAndSearchContainer.style.height = '100px'
 

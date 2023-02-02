@@ -1,4 +1,6 @@
 import './showInfo.css'
+import creepScoreImg from '../assets/cs.png'
+import goldScore from '../assets/gold.png'
 
 export function showPlayerStats(playerName, playerLevel, playerIconId){
     document.getElementById('player-icon').src = `http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${playerIconId}.png`
@@ -27,6 +29,69 @@ export function showMatch(response, summonerPuuid){
     championIcon.id = 'champion-player-icon'
     championIcon.src = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${playerStatsFiltered[0].championId}.png`
     championIconContainer.appendChild(championIcon)
+
+    matchContainer.append(showGameAndSpells(playerStatsFiltered, response), championIconContainer);
+
+    let itemsAndStatsContainer = document.createElement('div')
+    itemsAndStatsContainer.id = 'items-and-stats-container'
+
+    let itemsContainer = showPlayerItems(playerStatsFiltered)
+    ////
+    itemsAndStatsContainer.append(itemsContainer, showKdaCreepScoreGoldEarned(playerStatsFiltered))
+
+    matchContainer.append(itemsAndStatsContainer)
+
+
+}
+
+function showKdaCreepScoreGoldEarned(playerStatsFiltered){
+    let statsContainer = document.createElement('div')
+    statsContainer.id = 'stats-container'
+
+    let kdaScore = document.createElement('p')
+    kdaScore.innerHTML = `${playerStatsFiltered[0].kills} / ${playerStatsFiltered[0].deaths} / ${playerStatsFiltered[0].assists}`
+    
+    let creepScoreContainer = createScoreContainer(playerStatsFiltered, 'totalMinionsKilled', creepScoreImg)
+
+    let goldScoreContainer = createScoreContainer(playerStatsFiltered, 'goldEarned', goldScore)
+    statsContainer.append(kdaScore, creepScoreContainer, goldScoreContainer)
+    
+    return statsContainer
+}
+
+function createScoreContainer(playerStatsFiltered, scoreProperty, imageSelected){
+    let scoreContainer = document.createElement('div')
+    scoreContainer.classList.add('score-container')
+    let scoreText = document.createElement('p')
+    scoreText.innerHTML = `${playerStatsFiltered[0][scoreProperty]}`
+
+    let scoreImage = document.createElement('img')
+    scoreImage.src = imageSelected
+
+    scoreContainer.append(scoreText, scoreImage)
+
+    return scoreContainer
+}
+
+function showPlayerItems(playerStatsFiltered){
+    let itemsContainer = document.createElement('div')
+    itemsContainer.id = 'player-items-container'
+    for(let i = 0; i <= 6; i++){
+        let objectProperty = 'item' + `${i}`
+        let playerItem = document.createElement('img')
+        playerItem.classList.add('player-item')
+        if(playerStatsFiltered[0][objectProperty] == 0){
+            playerItem.style.backgroundColor = 'rgb(224, 224, 224)'
+            
+        }
+        else playerItem.src = `https://ddragon.leagueoflegends.com/cdn/13.1.1/img/item/${playerStatsFiltered[0][objectProperty]}.png`
+
+        itemsContainer.appendChild(playerItem)
+    }
+    return itemsContainer
+}
+
+function showGameAndSpells(playerStatsFiltered, response){
 
     let gameAndSpellsContainer = document.createElement('div')
     gameAndSpellsContainer.id = 'game-and-spells-container'
@@ -59,8 +124,8 @@ export function showMatch(response, summonerPuuid){
     spellsContainer.append(summonerSpell1, summonerSpell2);
 
     gameAndSpellsContainer.append(winOrDefeat, matchType, spellsContainer);
-
-    matchContainer.append(gameAndSpellsContainer, championIconContainer);
+    
+    return gameAndSpellsContainer
 }
 
 function checkGameType(response){

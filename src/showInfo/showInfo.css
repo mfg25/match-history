@@ -104,7 +104,31 @@
     flex-direction: row;
 }
 #first-summoner-spell{
-    background-color: blue;
+    border: 1px solid rgb(158, 158, 78);
     width: 32px;
     height: 32px;
+}
+#items-and-stats-container{
+   
+    position: relative;
+    height: 75%;
+    width: 280px;
+    left: 17%;
+}
+#stats-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    width: 280px;
+    height: 35px;
+}
+.player-item{
+    width: 37px;
+    height: 37px;
+    border: 1px solid rgb(158, 158, 78);
+}
+.score-container{
+    display: flex;
+    align-items: center;
 }
