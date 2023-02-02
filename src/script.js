@@ -30,7 +30,6 @@ function getRecentMatches(summonerPuuid){
     response.forEach(element => {
         getSingleMatch(element, summonerPuuid)
     });
-
 })
 }
 

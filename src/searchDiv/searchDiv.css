@@ -1,0 +1,36 @@
+#img-and-search-container{
+    position: relative;
+    bottom: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 350px;
+    width:500px
+}
+#img-logo{
+    width: 500px;
+}
+#form-container{
+    border-radius: 10px;
+    width: 500px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+#text-input{
+    height: 30px;
+    width: 400px;
+}
+form button{
+    height: 30px;
+    margin-left: 5px;
+    padding: 5px;
+}
