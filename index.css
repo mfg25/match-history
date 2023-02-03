@@ -5,53 +5,20 @@
 #main-info-container{
     box-sizing: border-box;
     padding-top: 20px;
-    width: 700px;
+    width: 800px;
     height: 600px;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#player-stats{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#main-info-container p{
+
+#recent-matches-text{
     font-size: larger;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
-#player-icon{
-    width: 150px;
-}
-#player-icon-container::after{
-    content: attr(data-value);
-    display:block;
-    position: relative;
-    left: 50%;
-    bottom: 10%;
-    transform: translateX(-50%);
-    background-color:rgb(189, 189, 189);
-    width: 50px;
-    height: 30px;
-}
-#matches-container{
-    text-align: center;
-    width: 100%;
-}
-.match-container{
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 100px;
-    background-color: red;
-}
-#champion-player-icon{
-    position: absolute;
-    left: 30px;
-    width: 70px;
-}
+
 /*!*******************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/searchDiv/searchDiv.css ***!
   \*******************************************************************************/
@@ -91,6 +58,143 @@ form button{
     margin-left: 5px;
     padding: 5px;
 }
+/*!*****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/showInfo/showInfo.css ***!
+  \*****************************************************************************/
+#player-icon{
+    width: 150px;
+}
+#player-icon-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#player-icon-container::after{
+    content: attr(data-value);
+    display:block;
+    position: relative;
+    bottom: 10%;
+    color: white;
+    border-radius: 10px;
+    background-color:rgb(14, 13, 13);
+    width: 50px;
+    height: 30px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+#matches-container{
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.match-container{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+}
+#champion-player-icon{
+    width: 70px;
+}
+#champion-icon-container{
+    position: absolute;
+    left: 30px;
+    width: 70px;
+    height:70px;
+}
+#champion-icon-container::after{
+    content: attr(data-value);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 20%;
+    color: white;
+    border-radius: 10px;
+    background-color:rgb(14, 13, 13);
+    width: 22px;
+    height: 22px;
+    left:100%;
+    transform: translateX(-60%);
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+}
+#player-stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#defeat{
+    height: 100%;
+    width: 10px;
+    background-color: rgb(199, 49, 49);
+}
+#win{
+    height: 100%;
+    width: 10px;
+    background-color: rgb(125, 166, 241);
+}
+#game-and-spells-container{
+    position: relative;
+    left: 13%;
+    height: 90%;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#player-name{
+    font-size:larger;
+}
+
+#match-type-text{
+    font-size:10px;
+    font-weight: bold;
+}
+#spells-container{
+    display: flex;
+    flex-direction: row;
+}
+#first-summoner-spell{
+    border: 1px solid rgb(158, 158, 78);
+    width: 32px;
+    height: 32px;
+}
+#items-and-stats-container{
+   
+    position: relative;
+    height: 75%;
+    width: 280px;
+    left: 17%;
+}
+#stats-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    width: 280px;
+    height: 35px;
+}
+.player-item{
+    width: 37px;
+    height: 37px;
+    border: 1px solid rgb(158, 158, 78);
+}
+.score-container{
+    display: flex;
+    align-items: center;
+}
 /*!********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pressets.css ***!
   \********************************************************************/
@@ -99,9 +203,12 @@ form button{
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#content{
-    height: 100vh;
+html, body{
+    height: 100%;
     background-color: rgb(224, 224, 224);
+}
+#content{
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
