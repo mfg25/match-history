@@ -7,7 +7,6 @@ export function searchBySummonersName(summonersNameValue){
 }).then(function(response){
     console.log(response)
     summonerPuuid = response.puuid
-    
     getRecentMatches(summonerPuuid)
 
     showPlayerStats(response.name, response.summonerLevel, response.profileIconId)
