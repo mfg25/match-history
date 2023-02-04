@@ -92,7 +92,7 @@
     justify-content: space-evenly;
 }
 #player-name{
-    font-size:25px;
+    font-size:larger;
 }
 
 #match-type-text{
@@ -109,14 +109,13 @@
     height: 32px;
 }
 #items-and-stats-container{
+   
     position: relative;
-    top: 5%;
     height: 75%;
     width: 280px;
     left: 17%;
 }
 #stats-container{
-    font-size: large;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -132,18 +131,4 @@
 .score-container{
     display: flex;
     align-items: center;
-}
-#match-stats-container{
-    font-size: large;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 70%;
-    position: relative;
-    left: 20%;
-    width: 200px;
-}
-#game-duration-and-date-container{
-    display: flex;
-    justify-content: space-evenly;
 }
