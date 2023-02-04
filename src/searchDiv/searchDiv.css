@@ -13,24 +13,42 @@
 }
 #form-container{
     border-radius: 10px;
-    width: 500px;
+    width: 600px;
     height: 100px;
     background-color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 form{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    width: 90%;
 }
 #text-input{
     height: 30px;
     width: 400px;
+    border: 2px solid #434e54;
 }
 form button{
-    height: 30px;
-    margin-left: 5px;
+    cursor: pointer;
+    height: 33px;
+    margin-left:2px;
     padding: 5px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #434e54;
+    color: white;
+}
+.error-message{
+    visibility: hidden;
+}
+#select-list{
+    margin-right: 2px;
+    height: 34px;
+    width: 100px;
+    border: 2px solid #434e54;
 }

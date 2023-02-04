@@ -21,9 +21,13 @@ export function insertSearchDiv(){
     searchButton.id = 'search-button'
     searchButton.innerHTML = 'Search'
 
+    let errorMessage = document.createElement('p')
+    errorMessage.id = 'error-message'
+    
+    let selectList = createSelectList(form)
 
     form.append(inputText, searchButton)
-    formContainer.appendChild(form)
+    formContainer.append(form, errorMessage)
     imgAndSearchContainer.append(imgLogo, formContainer)
     
 
@@ -33,10 +37,10 @@ export function insertSearchDiv(){
       mainInfoContainer()
       imgLogo.remove()
       imgAndSearchContainer.style.height = '100px'
-
+      let regionSelected = selectList.value
       let summonersNameValue = inputText.value.toLowerCase().replace(/\s+/g, '')
      
-      searchBySummonersName(summonersNameValue)
+      searchBySummonersName(summonersNameValue, regionSelected)
   })
     
     return imgAndSearchContainer
@@ -47,4 +51,22 @@ export function insertSearchDiv(){
           <button id="search-button">Search</button>
         </form>
       </div> */
+}
+
+function createSelectList(form){
+    let array = ['Brasil',  'Korea', 'Japan', 'Latin America South', 'North America', 'Europe West', 'Europe Nordic & East', 'Latin America North', 'Russia', 'Turkey', 'Singapore', 'Philippines', 'Taiwan', 'Vietnam', 'Thailand']
+    let arrayValues = ['BR1', 'KR', 'JP1', 'LA2', 'NA1', 'EUW1', 'EUN1', 'LA1', 'RU1', 'TR1', 'SG2', 'PH2', 'TW2', 'VN2', 'TH2']
+    let selectList = document.createElement('select')
+    selectList.id = 'select-list'
+
+    for(let i = 0; i < array.length; i++){
+      let option = document.createElement('option')
+      option.text = array[i]
+      option.value = arrayValues[i]
+      selectList.appendChild(option)
+    }
+
+    form.appendChild(selectList)
+
+    return selectList
 }
