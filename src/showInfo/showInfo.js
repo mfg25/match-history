@@ -39,8 +39,23 @@ export function showMatch(response, summonerPuuid){
     ////
     itemsAndStatsContainer.append(itemsContainer, showKdaCreepScoreGoldEarned(playerStatsFiltered))
 
-    matchContainer.append(itemsAndStatsContainer)
+    let matchStatsContainer = document.createElement('div')
+    matchStatsContainer.id = 'match-stats-container'
+    let mapPlayed = document.createElement('p')
+    mapPlayed.innerHTML = getMapPlayed(response)
 
+
+    let gameDurationAndDateContainer = document.createElement('div')
+    gameDurationAndDateContainer.id = 'game-duration-and-date-container'
+    let gameDuration = document.createElement('p')
+    gameDuration.innerHTML = getGameDuration(response)
+
+    let gameDate = document.createElement('p')
+    gameDate.innerHTML = getGameDate(response)
+
+    gameDurationAndDateContainer.append(gameDuration, gameDate)
+    matchStatsContainer.append(mapPlayed, gameDurationAndDateContainer)
+    matchContainer.append(itemsAndStatsContainer, matchStatsContainer)
 
 }
 
@@ -63,7 +78,7 @@ function createScoreContainer(playerStatsFiltered, scoreProperty, imageSelected)
     let scoreContainer = document.createElement('div')
     scoreContainer.classList.add('score-container')
     let scoreText = document.createElement('p')
-    scoreText.innerHTML = `${playerStatsFiltered[0][scoreProperty]}`
+    scoreText.innerHTML = playerStatsFiltered[0][scoreProperty].toLocaleString('pt-BR')
 
     let scoreImage = document.createElement('img')
     scoreImage.src = imageSelected
@@ -154,4 +169,30 @@ function checkSummonerSpells(playerStatsFiltered, SummonerSpellId){
         case 7: return `https://ddragon.leagueoflegends.com/cdn/13.1.1/img/spell/SummonerHeal.png`
     }
     
+}
+
+function getGameDate(response){
+    let date = new Date(response.info.gameEndTimestamp)
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let day = date.getDate()
+
+    let monthDateYear  = day + "/" + (month+1) + "/" + year;
+    return monthDateYear
+}
+
+function getGameDuration(response){
+    let duration = response.info.gameDuration
+    let gameMinutes = Math.floor(duration/60)
+    let gameSeconds = duration % 60
+    let gameHours = Math.floor(gameMinutes/60)
+    if(gameHours > 0) return `${gameHours}:${gameMinutes}:${gameSeconds}`
+    else return `${gameMinutes}:${gameSeconds}`
+}
+
+function getMapPlayed(response){
+    switch(response.info.mapId){
+        case 11: return `Summoner's Rift`
+        case 12: return `Howling Abyss`
+    }
 }

@@ -5,13 +5,14 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 350px;
-    width:500px
+    height: fit-content;
+    width:fit-content
 }
 #img-logo{
     width: 500px;
 }
 #form-container{
+    margin-top: 15px;
     border-radius: 10px;
     width: 600px;
     height: 100px;

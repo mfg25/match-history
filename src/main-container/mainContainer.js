@@ -34,14 +34,5 @@ export function mainInfoContainer(){
 
     document.getElementById('content').appendChild(mainContainer)
     
-    /* <div id="main-info-container">
-            <div id="player-stats">
-            <img src="" alt="" id="player-icon" />
-            <p id="player-name"></p>
-            <p id="player-level"></p>
-            </div>
-        <div id="matches-container">
-            <h3>Recent matches</h3>
-        </div>
-      </div> */
+
 }

@@ -34,9 +34,6 @@ export function insertSearchDiv(){
     searchButton.addEventListener('click', (e) =>{
       e.preventDefault()
       if(document.getElementById('main-info-container')) document.getElementById('main-info-container').remove()
-      mainInfoContainer()
-      imgLogo.remove()
-      imgAndSearchContainer.style.height = '100px'
       let regionSelected = selectList.value
       let summonersNameValue = inputText.value.toLowerCase().replace(/\s+/g, '')
      
@@ -44,13 +41,7 @@ export function insertSearchDiv(){
   })
     
     return imgAndSearchContainer
-    
-    /* <div id="form-container">
-        <form action="" id="form">
-          <input type="text" id="text-input" placeholder="Summoner's name" />
-          <button id="search-button">Search</button>
-        </form>
-      </div> */
+  
 }
 
 function createSelectList(form){
