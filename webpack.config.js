@@ -1,38 +1,37 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  entry: './src/index.js',
-  output:{
-    filename: 'main.js',
-    path: path.resolve(__dirname, './dist')
+  entry: "./src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "./dist"),
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, './dist'),
+      directory: path.join(__dirname, "./dist"),
     },
     compress: true,
     port: 9004,
   },
-  mode: 'development',
+  mode: "development",
   module: {
     rules: [
       {
-        test:/\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
-        ]
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
-    ]
+    ],
   },
-  plugins:[
+  plugins: [
     new MiniCssExtractPlugin({
-      filename: 'index.css'
-    })
-  ]
-}
+      filename: "index.css",
+    }),
+    new Dotenv(),
+  ],
+};
