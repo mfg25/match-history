@@ -1,10 +1,12 @@
 import { mainInfoContainer } from "../main-container/mainContainer";
 import { showMatch, showPlayerStats } from "../showInfo/showInfo";
 
+let api_key = "";
+
 export function searchBySummonersName(summonersNameValue, regionSelected) {
   let summonerPuuid;
   fetch(
-    `https://${regionSelected}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonersNameValue}?api_key=${process.env.API_URL}`,
+    `https://${regionSelected}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonersNameValue}?api_key=${api_key}`,
     { mode: "cors" }
   )
     .then(function (response) {
@@ -35,9 +37,7 @@ export function getRecentMatches(summonerPuuid, regionSelected) {
   fetch(
     `https://${getRegionName(
       regionSelected
-    )}.api.riotgames.com/lol/match/v5/matches/by-puuid/${summonerPuuid}/ids?start=0&count=20&api_key=${
-      process.env.API_URL
-    }`,
+    )}.api.riotgames.com/lol/match/v5/matches/by-puuid/${summonerPuuid}/ids?start=0&count=20&api_key=${api_key}`,
     { mode: "cors" }
   )
     .then(function (response) {
@@ -54,9 +54,7 @@ export function getSingleMatch(matchId, summonerPuuid, regionSelected) {
   fetch(
     `https://${getRegionName(
       regionSelected
-    )}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${
-      process.env.API_URL
-    }`,
+    )}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${api_key}`,
     { mode: "cors" }
   )
     .then(function (response) {
